@@ -7,10 +7,11 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import ContactForm from '@/components/ContactForm';
 
 const WebDevelopmentPage = () => {
-  // ✅ Media-first data: GIF > image
+  // ✅ Media-first data: VIDEO > GIF > IMAGE
+  // (video optional; add { video:'/app-development/videos/app1.mp4', poster:'/app-development/posters/app1.jpg' } to any item)
   const websites = [
-    { title: 'E-commerce Platform', url: '#', gif: '/gif/ecommercegif.gif' }, // local GIF from /public/gif
-    { title: 'Corporate Website', url: '#', image: '/Banner.jpg' },           // local image from /public
+    { title: 'E-commerce Platform', url: '#', gif: 'app-development/gif/ecommercemob.gif' },
+    { title: 'Corporate Website', url: '#', image: '/Banner.jpg' },
     { title: 'Portfolio Site', url: '#', image: '/logo.jpg' },
     { title: 'SaaS Platform', url: '#', image: '/crm_dashboard.jpg' },
     { title: 'Restaurant Website', url: '#', image: '/Banner.jpg' },
@@ -32,32 +33,16 @@ const WebDevelopmentPage = () => {
   ];
 
   const capabilities = [
-    {
-      icon: Code,
-      title: 'Frontend Development',
-      description: 'React, Vue.js, Angular, and modern JavaScript frameworks'
-    },
-    {
-      icon: Globe,
-      title: 'Backend Development',
-      description: 'Node.js, Python, PHP, and scalable server architectures'
-    },
-    {
-      icon: Smartphone,
-      title: 'Responsive Design',
-      description: 'Mobile-first approach ensuring perfect display on all devices'
-    },
-    {
-      icon: Zap,
-      title: 'Performance Optimization',
-      description: 'Fast loading times and optimized user experiences'
-    },
+    { icon: Code, title: 'Frontend Development', description: 'React, Vue.js, Angular, and modern JavaScript frameworks' },
+    { icon: Globe, title: 'Backend Development', description: 'Node.js, Python, PHP, and scalable server architectures' },
+    { icon: Smartphone, title: 'Responsive Design', description: 'Mobile-first approach ensuring perfect display on all devices' },
+    { icon: Zap, title: 'Performance Optimization', description: 'Fast loading times and optimized user experiences' },
   ];
 
   return (
     <>
       <Helmet>
-        <title>Web Development Services - Fullstackverse</title>
+        <title>App Development Services - Fullstackverse</title>
         <meta
           name="description"
           content="Professional web development services including responsive websites, web applications, and e-commerce platforms. Modern, fast, and SEO-optimized solutions."
@@ -74,7 +59,7 @@ const WebDevelopmentPage = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Web Development
+              App Development
               <span className="block text-gradient">Excellence</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
@@ -131,7 +116,7 @@ const WebDevelopmentPage = () => {
         </div>
       </section>
 
-      {/* Portfolio Section (2 columns + GIF support) */}
+      {/* Portfolio Section – cards fit to mobile screen (portrait 9:16) */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -141,10 +126,11 @@ const WebDevelopmentPage = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Portfolio</h2>
-            <p className="text-xl text-gray-600">20+ successful web projects delivered</p>
+            <p className="text-xl text-gray-600">Mobile-style cards (9:16)</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* grid unchanged; only cards are now portrait */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
             {websites.map((website, index) => (
               <motion.div
                 key={website.title}
@@ -154,24 +140,44 @@ const WebDevelopmentPage = () => {
                 transition={{ duration: 0.6, delay: (index % 8) * 0.1 }}
                 onClick={() => window.open(website.url, '_blank')}
               >
-                <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <img
-                      className="w-full h-full object-cover"
-                      alt={`${website.title} screenshot`}
-                      // ✅ GIF preferred, then image, then fallback
-                      src={
-                        website.gif
-                          ? website.gif
-                          : website.image
-                            ? website.image
-                            : 'https://via.placeholder.com/800x450'
-                      }
-                      loading="lazy"
-                      decoding="async"
-                    />
+                <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                  {/* 👇 Phone-like frame */}
+                  <div className="p-3">
+                    <div className="relative w-full aspect-[9/16] bg-black rounded-3xl overflow-hidden ring-1 ring-black/10">
+                      {/* optional small top bar */}
+                      <div className="absolute top-2 left-1/2 -translate-x-1/2 h-1.5 w-16 rounded-full bg-white/20 z-10" />
+                      {website.video ? (
+                        <video
+                          className="absolute inset-0 w-full h-full object-cover"
+                          src={website.video}
+                          poster={website.poster}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                        />
+                      ) : website.gif ? (
+                        <img
+                          className="absolute inset-0 w-full h-full object-cover"
+                          alt={`${website.title} preview`}
+                          src={website.gif}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <img
+                          className="absolute inset-0 w-full h-full object-cover"
+                          alt={`${website.title} screenshot`}
+                          src={website.image || 'https://via.placeholder.com/720x1280'}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
+                    </div>
                   </div>
-                  <div className="p-4">
+
+                  <div className="px-4 pb-4">
                     <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                       {website.title}
                     </h3>

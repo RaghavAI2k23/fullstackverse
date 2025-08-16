@@ -7,24 +7,25 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import ContactForm from '@/components/ContactForm';
 
 const AboutUsPage = () => {
+  // Put photos in: /public/about/ (e.g., /about/sachin.jpg, /about/durgesh.jpg, /about/himanshu.jpg)
   const team = [
     {
       name: 'Sachin Choudhary',
       role: 'Founder & CEO',
       bio: 'Visionary leader with 10+ years of experience in digital transformation and technology innovation.',
-      image: 'Professional headshot of Sachin Choudhary, CEO of Fullstackverse'
+      image: '/about/founder.jpeg', // <-- change to your real filename
     },
     {
       name: 'Durgesh Keshari Deva',
       role: 'Web Services Lead',
       bio: 'Expert in web technologies with a passion for creating exceptional user experiences.',
-      image: 'Professional headshot of Durgesh Keshari Deva, Web Services Lead'
+      image: '/about/durgesh.png',
     },
     {
       name: 'Himanshu Kumar Thakur',
       role: 'Software Lead',
       bio: 'Full-stack developer specializing in scalable software architecture and modern frameworks.',
-      image: 'Professional headshot of Himanshu Kumar Thakur, Software Lead'
+      image: '/about/himanshu.jpeg',
     },
   ];
 
@@ -46,7 +47,10 @@ const AboutUsPage = () => {
     <>
       <Helmet>
         <title>About Us - Fullstackverse</title>
-        <meta name="description" content="Learn about Fullstackverse team, our mission to innovate with AI, apps & automation. Meet our founders and discover our comprehensive digital services." />
+        <meta
+          name="description"
+          content="Learn about Fullstackverse team, our mission to innovate with AI, apps & automation. Meet our founders and discover our comprehensive digital services."
+        />
       </Helmet>
 
       {/* Hero Section */}
@@ -80,13 +84,13 @@ const AboutUsPage = () => {
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 mb-6">
-                To empower businesses with cutting-edge digital solutions that drive growth, 
-                efficiency, and innovation. We believe in transforming ideas into reality through 
+                To empower businesses with cutting-edge digital solutions that drive growth,
+                efficiency, and innovation. We believe in transforming ideas into reality through
                 the power of technology.
               </p>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Vision</h3>
+              <h3 className="text-4xl font-bold text-gray-900 mb-6">Our Vision</h3>
               <p className="text-lg text-gray-600">
-                To be the leading digital transformation partner, helping businesses worldwide 
+                To be the leading digital transformation partner, helping businesses worldwide
                 harness the full potential of AI, automation, and modern technology.
               </p>
             </motion.div>
@@ -96,10 +100,11 @@ const AboutUsPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <img  
-                className="rounded-2xl shadow-xl w-full h-96 object-cover" 
+              <img
+                className="rounded-2xl shadow-xl w-full h-96 object-cover"
                 alt="Fullstackverse team working on innovative technology solutions"
-               src="https://images.unsplash.com/photo-1681184025442-1517cb9319c1" />
+                src="https://images.unsplash.com/photo-1681184025442-1517cb9319c1"
+              />
             </motion.div>
           </div>
         </div>
@@ -128,11 +133,14 @@ const AboutUsPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <div className="text-center">
-                  <div className="w-32 h-32 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <img  
-                      className="w-full h-full object-cover rounded-2xl" 
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden">
+                    <img
+                      className="w-full h-full object-cover"
                       alt={`${member.name} profile photo`}
-                     src="https://images.unsplash.com/photo-1644424235476-295f24d503d9" />
+                      src={member.image || '/about/placeholder.jpg'}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
                   <p className="text-blue-600 font-semibold mb-4">{member.role}</p>
