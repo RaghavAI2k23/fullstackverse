@@ -74,7 +74,7 @@ const HomePage = () => {
           <img  
             className="hero-video w-full h-full object-cover" 
             alt="Futuristic technology workspace with AI and automation"
-           src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d" />
+           src="Banner.jpg" />
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </div>
         
@@ -116,7 +116,7 @@ const HomePage = () => {
               </DialogContent>
             </Dialog>
             
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg">
+            <Button variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-gray-900 px-8 py-4 text-lg">
               <Play className="mr-2 h-5 w-5" />
               Watch Demo
             </Button>
