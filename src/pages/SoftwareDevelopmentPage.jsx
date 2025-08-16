@@ -46,22 +46,29 @@ const SoftwareDevelopmentPage = () => {
     'MongoDB', 'AWS', 'Azure', 'Docker', 'Kubernetes'
   ];
 
+  const DEFAULT_IMAGE =
+    'https://images.unsplash.com/photo-1648134859182-98df6e93ef58';
+
   const projects = [
-    { title: 'ERP System', category: 'Enterprise', status: 'Live' },
-    { title: 'CRM Platform', category: 'Business', status: 'Live' },
-    { title: 'Inventory Management', category: 'Logistics', status: 'Live' },
-    { title: 'HR Management System', category: 'Human Resources', status: 'Live' },
-    { title: 'Financial Dashboard', category: 'Finance', status: 'Live' },
-    { title: 'Project Management Tool', category: 'Productivity', status: 'Live' },
-    { title: 'Document Management', category: 'Enterprise', status: 'Live' },
-    { title: 'Analytics Platform', category: 'Data', status: 'Live' },
+    { title: 'ERP System', category: 'Enterprise', status: 'Live', image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a' },
+    { title: 'CRM Platform', category: 'Business', status: 'Live', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c' },
+    { title: 'Inventory Management', category: 'Logistics', status: 'Live', image: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b' },
+    { title: 'HR Management System', category: 'Human Resources', status: 'Live', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c' },
+    { title: 'Financial Dashboard', category: 'Finance', status: 'Live', image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296' },
+    { title: 'Project Management Tool', category: 'Productivity', status: 'Live', image: 'https://images.unsplash.com/photo-1551281044-8d8f3227ae79' },
+    { title: 'Document Management', category: 'Enterprise', status: 'Live', image: 'https://images.unsplash.com/photo-1517430816045-df4b7de11d1d' },
+    { title: 'Analytics Platform', category: 'Data', status: 'Live', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71' },
+    { title: 'Quiz Platform', category: 'EdTech', status: 'Live', gif: '/web-development/gif/quizgif.gif' }
   ];
 
   return (
     <>
       <Helmet>
         <title>Software Development Services - Fullstackverse</title>
-        <meta name="description" content="Custom software development services including enterprise applications, cloud solutions, database design, and system integration. Scalable and secure software solutions." />
+        <meta
+          name="description"
+          content="Custom software development services including enterprise applications, cloud solutions, database design, and system integration. Scalable and secure software solutions."
+        />
       </Helmet>
 
       {/* Hero Section */}
@@ -82,7 +89,10 @@ const SoftwareDevelopmentPage = () => {
             </p>
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg"
+                >
                   Start Your Software Project
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -181,19 +191,24 @@ const SoftwareDevelopmentPage = () => {
               >
                 <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                   <div className="aspect-video bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center relative">
-                    <img  
-                      className="w-full h-full object-cover" 
+                    <img
+                      className="w-full h-full object-cover"
                       alt={`${project.title} software interface`}
-                     src="https://images.unsplash.com/photo-1648134859182-98df6e93ef58" />
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                        {project.status}
-                      </span>
-                    </div>
+                      src={project.image || project.gif || DEFAULT_IMAGE}
+                    />
+                    {project.status && (
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                          {project.status}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-gray-900 mb-1">{project.title}</h3>
-                    <p className="text-sm text-gray-500">{project.category}</p>
+                    {project.category && (
+                      <p className="text-sm text-gray-500">{project.category}</p>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -228,7 +243,11 @@ const SoftwareDevelopmentPage = () => {
           >
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg"
+                >
                   Discuss Your Business Requirement
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>

@@ -9,7 +9,7 @@ import ContactForm from '@/components/ContactForm';
 const GameDevelopmentPage = () => {
   const games = [
     { title: 'Space Adventure', genre: 'Action', platform: 'Mobile' },
-    { title: 'Puzzle Master', genre: 'Puzzle', platform: 'Web' },
+    { title: 'Kids Learning Game ', genre: 'Puzzle', platform: 'Web & App' },
     { title: 'Racing Thunder', genre: 'Racing', platform: 'Mobile' },
     { title: 'Strategy Empire', genre: 'Strategy', platform: 'PC' },
     { title: 'Card Battle', genre: 'Card Game', platform: 'Mobile' },

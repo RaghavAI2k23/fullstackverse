@@ -11,25 +11,20 @@ const WebDevelopmentPage = () => {
   // (video optional; add { video:'/app-development/videos/app1.mp4', poster:'/app-development/posters/app1.jpg' } to any item)
   const websites = [
     { title: 'E-commerce Platform', url: '#', gif: 'app-development/gif/ecommercemob.gif' },
-    { title: 'Corporate Website', url: '#', image: '/Banner.jpg' },
-    { title: 'Portfolio Site', url: '#', image: '/logo.jpg' },
-    { title: 'SaaS Platform', url: '#', image: '/crm_dashboard.jpg' },
-    { title: 'Restaurant Website', url: '#', image: '/Banner.jpg' },
-    { title: 'Healthcare Portal', url: '#', image: '/logo.jpg' },
+    { title: 'Corporate App', url: '#', image: '/Banner.jpg' },
+    { title: 'Restaurant App', url: '#', image: '/Banner.jpg' },
+    { title: 'Healthcare App', url: '#', image: '/logo.jpg' },
     { title: 'Education Platform', url: '#', image: '/crm_dashboard.jpg' },
-    { title: 'Real Estate Site', url: '#', image: '/Banner.jpg' },
+    { title: 'Real Estate App', url: '#', image: '/Banner.jpg' },
     { title: 'Travel Booking', url: '#', image: '/logo.jpg' },
-    { title: 'News Portal', url: '#', image: '/crm_dashboard.jpg' },
     { title: 'Fashion Store', url: '#', image: '/Banner.jpg' },
-    { title: 'Tech Blog', url: '#', image: '/logo.jpg' },
     { title: 'Fitness App', url: '#', image: '/crm_dashboard.jpg' },
     { title: 'Music Platform', url: '#', image: '/Banner.jpg' },
     { title: 'Food Delivery', url: '#', image: '/logo.jpg' },
-    { title: 'Banking Portal', url: '#', image: '/crm_dashboard.jpg' },
-    { title: 'Social Network', url: '#', image: '/Banner.jpg' },
-    { title: 'Job Portal', url: '#', image: '/logo.jpg' },
-    { title: 'Event Management', url: '#', image: '/crm_dashboard.jpg' },
-    { title: 'Charity Website', url: '#', image: '/Banner.jpg' },
+    { title: 'Social Network App', url: '#', image: '/Banner.jpg' },
+    { title: 'Job Portal App', url: '#', image: '/logo.jpg' },
+    { title: 'Event Management App', url: '#', image: '/crm_dashboard.jpg' },
+    { title: 'Charity App', url: '#', image: '/Banner.jpg' },
   ];
 
   const capabilities = [
